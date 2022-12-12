@@ -1,0 +1,233 @@
+{
+  "ProjectName": "PocketBaseClient.MyTodoList",
+  "Namespace": "PocketBaseClient.MyTodoList",
+  "PocketBaseApplication": {
+    "appName": "my-todo-list",
+    "appUrl": "https://my-todo-list.pockethost.io"
+  },
+  "SchemaDate": "2022-12-12T11:22:41.640583Z",
+  "Collections": [
+    {
+      "Id": "_pb_users_auth_",
+      "Created": "12/12/2022 10:45:07",
+      "Updated": "12/12/2022 10:45:07",
+      "Name": "users",
+      "System": false,
+      "ListRule": "id = @request.auth.id",
+      "ViewRule": "id = @request.auth.id",
+      "CreateRule": "",
+      "UpdateRule": "id = @request.auth.id",
+      "DeleteRule": "id = @request.auth.id",
+      "Schema": [
+        {
+          "Id": "users_name",
+          "Name": "name",
+          "Type": "text",
+          "System": false,
+          "Required": false,
+          "Unique": false,
+          "Options": {
+            "min": null,
+            "max": null,
+            "pattern": ""
+          }
+        },
+        {
+          "Id": "users_avatar",
+          "Name": "avatar",
+          "Type": "file",
+          "System": false,
+          "Required": false,
+          "Unique": false,
+          "Options": {
+            "maxSelect": 1,
+            "maxSize": 5242880,
+            "mimeTypes": [
+              "image/jpg",
+              "image/jpeg",
+              "image/png",
+              "image/svg\u002Bxml",
+              "image/gif"
+            ],
+            "thumbs": null
+          }
+        }
+      ]
+    },
+    {
+      "Id": "w4ykjpp5mxau16a",
+      "Created": "12/12/2022 10:53:20",
+      "Updated": "12/12/2022 15:43:59",
+      "Name": "todo_lists",
+      "System": false,
+      "ListRule": "",
+      "ViewRule": "",
+      "CreateRule": "",
+      "UpdateRule": "",
+      "DeleteRule": null,
+      "Schema": [
+        {
+          "Id": "agbynrkr",
+          "Name": "name",
+          "Type": "text",
+          "System": false,
+          "Required": true,
+          "Unique": true,
+          "Options": {
+            "min": 3,
+            "max": null,
+            "pattern": ""
+          }
+        },
+        {
+          "Id": "ipmwycuu",
+          "Name": "description",
+          "Type": "text",
+          "System": false,
+          "Required": false,
+          "Unique": false,
+          "Options": {
+            "min": null,
+            "max": null,
+            "pattern": ""
+          }
+        },
+        {
+          "Id": "16w49cfn",
+          "Name": "tasks",
+          "Type": "relation",
+          "System": false,
+          "Required": false,
+          "Unique": false,
+          "Options": {
+            "maxSelect": null,
+            "collectionId": "zqszc5ugiu7g2i8",
+            "cascadeDelete": false
+          }
+        }
+      ]
+    },
+    {
+      "Id": "zqszc5ugiu7g2i8",
+      "Created": "12/12/2022 10:54:28",
+      "Updated": "12/12/2022 12:18:38",
+      "Name": "tasks",
+      "System": false,
+      "ListRule": "",
+      "ViewRule": "",
+      "CreateRule": "",
+      "UpdateRule": "",
+      "DeleteRule": "",
+      "Schema": [
+        {
+          "Id": "4kxyduic",
+          "Name": "title",
+          "Type": "text",
+          "System": false,
+          "Required": true,
+          "Unique": false,
+          "Options": {
+            "min": 3,
+            "max": null,
+            "pattern": ""
+          }
+        },
+        {
+          "Id": "hffqq44h",
+          "Name": "description",
+          "Type": "text",
+          "System": false,
+          "Required": false,
+          "Unique": false,
+          "Options": {
+            "min": null,
+            "max": null,
+            "pattern": ""
+          }
+        },
+        {
+          "Id": "pp2uicwe",
+          "Name": "priority",
+          "Type": "relation",
+          "System": false,
+          "Required": true,
+          "Unique": false,
+          "Options": {
+            "maxSelect": 1,
+            "collectionId": "qiaa7aqz9a6u1yg",
+            "cascadeDelete": false
+          }
+        },
+        {
+          "Id": "4e4k0hod",
+          "Name": "status",
+          "Type": "select",
+          "System": false,
+          "Required": false,
+          "Unique": false,
+          "Options": {
+            "maxSelect": 1,
+            "values": [
+              "to do",
+              "doing",
+              "paused",
+              "done"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Id": "qiaa7aqz9a6u1yg",
+      "Created": "12/12/2022 10:55:18",
+      "Updated": "12/12/2022 12:18:53",
+      "Name": "priorities",
+      "System": false,
+      "ListRule": "",
+      "ViewRule": "",
+      "CreateRule": null,
+      "UpdateRule": null,
+      "DeleteRule": null,
+      "Schema": [
+        {
+          "Id": "ibvcphat",
+          "Name": "name",
+          "Type": "text",
+          "System": false,
+          "Required": true,
+          "Unique": true,
+          "Options": {
+            "min": 3,
+            "max": null,
+            "pattern": ""
+          }
+        },
+        {
+          "Id": "gmaupy0p",
+          "Name": "value",
+          "Type": "number",
+          "System": false,
+          "Required": true,
+          "Unique": false,
+          "Options": {
+            "min": 0,
+            "max": 100
+          }
+        },
+        {
+          "Id": "bi4zhhtt",
+          "Name": "description",
+          "Type": "text",
+          "System": false,
+          "Required": false,
+          "Unique": false,
+          "Options": {
+            "min": null,
+            "max": null,
+            "pattern": ""
+          }
+        }
+      ]
+    }
+  ]
+}

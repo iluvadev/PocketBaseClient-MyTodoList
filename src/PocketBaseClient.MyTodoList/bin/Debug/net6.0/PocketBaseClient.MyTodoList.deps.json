@@ -1,0 +1,54 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "PocketBaseClient.MyTodoList/1.0.0": {
+        "dependencies": {
+          "PocketBaseClient": "0.2.0"
+        },
+        "runtime": {
+          "PocketBaseClient.MyTodoList.dll": {}
+        }
+      },
+      "pocketbase-csharp-sdk/1.0.0-prerelease": {
+        "runtime": {
+          "lib/net6.0/pocketbase-csharp-sdk.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "PocketBaseClient/0.2.0": {
+        "dependencies": {
+          "pocketbase-csharp-sdk": "1.0.0-prerelease"
+        },
+        "runtime": {
+          "PocketBaseClient.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PocketBaseClient.MyTodoList/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "pocketbase-csharp-sdk/1.0.0-prerelease": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-J65HXgXHsrjdy7Px+NQnhcOuJOTAALxUcDerB+ANqtpSGLhYoMV4LquYhM+hsC6XXUmzS4QcnN7XcKLG82Romw==",
+      "path": "pocketbase-csharp-sdk/1.0.0-prerelease",
+      "hashPath": "pocketbase-csharp-sdk.1.0.0-prerelease.nupkg.sha512"
+    },
+    "PocketBaseClient/0.2.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
