@@ -27,7 +27,10 @@
           "pocketbase-csharp-sdk": "1.0.0-prerelease"
         },
         "runtime": {
-          "PocketBaseClient.dll": {}
+          "lib/net6.0/PocketBaseClient.dll": {
+            "assemblyVersion": "0.2.0.0",
+            "fileVersion": "0.2.0.0"
+          }
         }
       }
     }
@@ -46,9 +49,11 @@
       "hashPath": "pocketbase-csharp-sdk.1.0.0-prerelease.nupkg.sha512"
     },
     "PocketBaseClient/0.2.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CTi+y5HWfbvdF1RJCmv1m5zpiefhC1r2t8QPtfGveYzkjXiW/FhjFdAcaqWMxx2r5TssmrtZ4ese/RToek6iFw==",
+      "path": "pocketbaseclient/0.2.0",
+      "hashPath": "pocketbaseclient.0.2.0.nupkg.sha512"
     }
   }
 }

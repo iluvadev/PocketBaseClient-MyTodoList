@@ -26,12 +26,14 @@ namespace PocketBaseClient.MyTodoList.Models
     {
         #region Collection
         private static CollectionBase? _Collection = null;
+        /// <inheritdoc />
         [JsonIgnore]
         public override CollectionBase Collection => _Collection ??= DataServiceBase.GetCollection<TodoList>()!;
         #endregion Collection
 
         #region Field Properties
         private string? _Name = null;
+        /// <summary> Maps to 'name' field in PocketBase </summary>
         [JsonPropertyName("name")]
         [PocketBaseField(id: "agbynrkr", name: "name", required: true, system: false, unique: true, type: "text")]
         [Display(Name = "Name")]
@@ -44,6 +46,7 @@ namespace PocketBaseClient.MyTodoList.Models
         }
 
         private string? _Description = null;
+        /// <summary> Maps to 'description' field in PocketBase </summary>
         [JsonPropertyName("description")]
         [PocketBaseField(id: "ipmwycuu", name: "description", required: false, system: false, unique: false, type: "text")]
         [Display(Name = "Description")]
@@ -54,6 +57,7 @@ namespace PocketBaseClient.MyTodoList.Models
         }
 
         private LimitableList<Task> _Tasks = new LimitableList<Task>();
+        /// <summary> Maps to 'tasks' field in PocketBase </summary>
         [JsonPropertyName("tasks")]
         [PocketBaseField(id: "16w49cfn", name: "tasks", required: false, system: false, unique: false, type: "relation")]
         [Display(Name = "Tasks")]
@@ -67,6 +71,7 @@ namespace PocketBaseClient.MyTodoList.Models
 
         #endregion Field Properties
 
+        /// <inheritdoc />
         public override void UpdateWith(ItemBase itemBase)
         {
             base.UpdateWith(itemBase);
@@ -80,6 +85,7 @@ namespace PocketBaseClient.MyTodoList.Models
             }
         }
 
+        /// <inheritdoc />
         protected override IEnumerable<ItemBase?> RelatedItems 
             => base.RelatedItems.Union(Tasks);
 

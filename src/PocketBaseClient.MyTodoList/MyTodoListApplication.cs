@@ -17,6 +17,7 @@ namespace PocketBaseClient.MyTodoList
     public partial class MyTodoListApplication : PocketBaseClientApplication
     {
         private MyTodoListDataService? _Data = null;
+        /// <summary> Access to Data for Application my-todo-list </summary>
         public MyTodoListDataService Data => _Data ??= new MyTodoListDataService(this);
 
         #region Constructors

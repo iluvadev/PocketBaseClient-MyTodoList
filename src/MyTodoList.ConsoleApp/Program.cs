@@ -100,10 +100,10 @@ namespace MyTodoList.ConsoleApp
         {
             ConsoleHelper.WriteYouAreIn(item.Collection, item, "Edit");
             ConsoleHelper.WriteItem(item);
-
+            
             item.Name = Prompt.Input<string>("Name for created TodoList", item.Name);
             item.Description = Prompt.Input<string>("Description for created TodoList", item.Description);
-
+            
             ConsoleHelper.WriteItem(item);
         }
 

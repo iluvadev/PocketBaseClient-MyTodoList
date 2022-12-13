@@ -17,16 +17,23 @@ namespace PocketBaseClient.MyTodoList.Models
 {
     public partial class CollectionTodoLists : CollectionBase<TodoList>
     {
+        /// <inheritdoc />
         public override string Id => "w4ykjpp5mxau16a";
+
+        /// <inheritdoc />
         public override string Name => "todo_lists";
+
+        /// <inheritdoc />
         public override bool System => false;
 
         public CollectionTodoLists(DataServiceBase context) : base(context) { }
 
 
+        /// <summary> Query data at PocketBase, defining a Filter over collection 'todo_lists' </summary>
         public CollectionQuery<CollectionTodoLists, TodoList> Filter(string filterString)
              => new CollectionQuery<CollectionTodoLists, TodoList>(this, FilterQuery.Create(filterString));
 
+        /// <summary> Query data at PocketBase, defining a Filter over collection 'todo_lists' </summary>
         public CollectionQuery<CollectionTodoLists, TodoList> Filter(Func<TodoList.Filters, FilterQuery> filter)
             => new CollectionQuery<CollectionTodoLists, TodoList>(this, filter(new TodoList.Filters()));
 

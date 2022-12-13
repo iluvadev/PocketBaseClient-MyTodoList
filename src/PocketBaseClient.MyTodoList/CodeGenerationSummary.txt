@@ -23,7 +23,7 @@ pocketbase project: https://github.com/pocketbase/pocketbase
 
 Code generated with:
     PocketBaseClient CodeGenerator: pbcodegen v.0.3.1.0
-    At: 2022-12-12T22:45:01.1904498Z
+    At: 2022-12-13T20:38:42.9709469Z
 
 PocketBase Application: 
     Name: my-todo-list

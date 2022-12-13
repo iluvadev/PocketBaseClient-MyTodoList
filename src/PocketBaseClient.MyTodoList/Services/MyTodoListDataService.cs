@@ -18,11 +18,16 @@ namespace PocketBaseClient.MyTodoList.Services
     public partial class MyTodoListDataService : DataServiceBase
     {
         #region Collections
+        /// <summary> Collection 'users' in PocketBase </summary>
         public CollectionUsers UsersCollection { get; }
+        /// <summary> Collection 'todo_lists' in PocketBase </summary>
         public CollectionTodoLists TodoListsCollection { get; }
+        /// <summary> Collection 'tasks' in PocketBase </summary>
         public CollectionTasks TasksCollection { get; }
+        /// <summary> Collection 'priorities' in PocketBase </summary>
         public CollectionPriorities PrioritiesCollection { get; }
 
+        /// <inheritdoc />
         protected override void RegisterCollections()
         {
             RegisterCollection(typeof(PocketBaseClient.MyTodoList.Models.User), UsersCollection);

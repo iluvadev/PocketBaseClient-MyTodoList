@@ -19,7 +19,9 @@ namespace PocketBaseClient.MyTodoList.Models
         public class Filters : ItemBaseFilters
         {
 
+            /// <summary>Makes a Filter to Query data over the 'title' field</summary>
             public FilterQuery Title(OperatorText op, string value) => FilterQuery.Create("title", op, value);
+            /// <summary>Makes a Filter to Query data over the 'description' field</summary>
             public FilterQuery Description(OperatorText op, string value) => FilterQuery.Create("description", op, value);
 
         }

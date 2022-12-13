@@ -10,5 +10,3 @@ C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodo
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\refint\PocketBaseClient.MyTodoList.dll
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\PocketBaseClient.MyTodoList.pdb
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\ref\PocketBaseClient.MyTodoList.dll
-C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\bin\Debug\net6.0\PocketBaseClient.dll
-C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\PocketBaseClient.MyTodoList.csproj.CopyComplete

@@ -26,12 +26,14 @@ namespace PocketBaseClient.MyTodoList.Models
     {
         #region Collection
         private static CollectionBase? _Collection = null;
+        /// <inheritdoc />
         [JsonIgnore]
         public override CollectionBase Collection => _Collection ??= DataServiceBase.GetCollection<Task>()!;
         #endregion Collection
 
         #region Field Properties
         private string? _Title = null;
+        /// <summary> Maps to 'title' field in PocketBase </summary>
         [JsonPropertyName("title")]
         [PocketBaseField(id: "4kxyduic", name: "title", required: true, system: false, unique: false, type: "text")]
         [Display(Name = "Title")]
@@ -44,6 +46,7 @@ namespace PocketBaseClient.MyTodoList.Models
         }
 
         private string? _Description = null;
+        /// <summary> Maps to 'description' field in PocketBase </summary>
         [JsonPropertyName("description")]
         [PocketBaseField(id: "hffqq44h", name: "description", required: false, system: false, unique: false, type: "text")]
         [Display(Name = "Description")]
@@ -54,6 +57,7 @@ namespace PocketBaseClient.MyTodoList.Models
         }
 
         private Priority? _Priority = null;
+        /// <summary> Maps to 'priority' field in PocketBase </summary>
         [JsonPropertyName("priority")]
         [PocketBaseField(id: "pp2uicwe", name: "priority", required: true, system: false, unique: false, type: "relation")]
         [Display(Name = "Priority")]
@@ -66,6 +70,7 @@ namespace PocketBaseClient.MyTodoList.Models
         }
 
         private StatusEnum? _Status = null;
+        /// <summary> Maps to 'status' field in PocketBase </summary>
         [JsonPropertyName("status")]
         [PocketBaseField(id: "4e4k0hod", name: "status", required: false, system: false, unique: false, type: "select")]
         [Display(Name = "Status")]
@@ -79,6 +84,7 @@ namespace PocketBaseClient.MyTodoList.Models
 
         #endregion Field Properties
 
+        /// <inheritdoc />
         public override void UpdateWith(ItemBase itemBase)
         {
             base.UpdateWith(itemBase);
@@ -93,6 +99,7 @@ namespace PocketBaseClient.MyTodoList.Models
             }
         }
 
+        /// <inheritdoc />
         protected override IEnumerable<ItemBase?> RelatedItems 
             => base.RelatedItems.Union(new List<ItemBase?>() { Priority });
 

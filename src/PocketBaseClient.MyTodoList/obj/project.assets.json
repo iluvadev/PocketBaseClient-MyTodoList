@@ -12,16 +12,15 @@
         }
       },
       "PocketBaseClient/0.2.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "type": "package",
         "dependencies": {
           "pocketbase-csharp-sdk": "1.0.0-prerelease"
         },
         "compile": {
-          "bin/placeholder/PocketBaseClient.dll": {}
+          "lib/net6.0/PocketBaseClient.dll": {}
         },
         "runtime": {
-          "bin/placeholder/PocketBaseClient.dll": {}
+          "lib/net6.0/PocketBaseClient.dll": {}
         }
       }
     }
@@ -42,14 +41,21 @@
       ]
     },
     "PocketBaseClient/0.2.0": {
-      "type": "project",
-      "path": "../../../PocketBaseClient-csharp/src/PocketBaseClient/PocketBaseClient.csproj",
-      "msbuildProject": "../../../PocketBaseClient-csharp/src/PocketBaseClient/PocketBaseClient.csproj"
+      "sha512": "CTi+y5HWfbvdF1RJCmv1m5zpiefhC1r2t8QPtfGveYzkjXiW/FhjFdAcaqWMxx2r5TssmrtZ4ese/RToek6iFw==",
+      "type": "package",
+      "path": "pocketbaseclient/0.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/PocketBaseClient.dll",
+        "pocketbaseclient.0.2.0.nupkg.sha512",
+        "pocketbaseclient.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "PocketBaseClient >= 0.2.0"
+      "PocketBaseClient >= *"
     ]
   },
   "packageFolders": {
@@ -91,11 +97,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Dev\\iluvadev\\projects\\PocketBaseClient-csharp\\src\\PocketBaseClient\\PocketBaseClient.csproj": {
-              "projectPath": "C:\\Dev\\iluvadev\\projects\\PocketBaseClient-csharp\\src\\PocketBaseClient\\PocketBaseClient.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -107,6 +109,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "PocketBaseClient": {
+            "target": "Package",
+            "version": "[*, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

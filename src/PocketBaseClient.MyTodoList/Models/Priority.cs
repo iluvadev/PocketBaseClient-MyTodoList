@@ -26,12 +26,14 @@ namespace PocketBaseClient.MyTodoList.Models
     {
         #region Collection
         private static CollectionBase? _Collection = null;
+        /// <inheritdoc />
         [JsonIgnore]
         public override CollectionBase Collection => _Collection ??= DataServiceBase.GetCollection<Priority>()!;
         #endregion Collection
 
         #region Field Properties
         private string? _Name = null;
+        /// <summary> Maps to 'name' field in PocketBase </summary>
         [JsonPropertyName("name")]
         [PocketBaseField(id: "ibvcphat", name: "name", required: true, system: false, unique: true, type: "text")]
         [Display(Name = "Name")]
@@ -44,6 +46,7 @@ namespace PocketBaseClient.MyTodoList.Models
         }
 
         private int? _Value = null;
+        /// <summary> Maps to 'value' field in PocketBase </summary>
         [JsonPropertyName("value")]
         [PocketBaseField(id: "gmaupy0p", name: "value", required: true, system: false, unique: false, type: "number")]
         [Display(Name = "Value")]
@@ -56,6 +59,7 @@ namespace PocketBaseClient.MyTodoList.Models
         }
 
         private string? _Description = null;
+        /// <summary> Maps to 'description' field in PocketBase </summary>
         [JsonPropertyName("description")]
         [PocketBaseField(id: "bi4zhhtt", name: "description", required: false, system: false, unique: false, type: "text")]
         [Display(Name = "Description")]
@@ -68,6 +72,7 @@ namespace PocketBaseClient.MyTodoList.Models
 
         #endregion Field Properties
 
+        /// <inheritdoc />
         public override void UpdateWith(ItemBase itemBase)
         {
             base.UpdateWith(itemBase);

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/q85dj8/q5Wrk+xOQu1SbOmiZbXcripFNlzX9dB2oRtIYIMVG3NBgiY4Je2XYeN0OS/CPkSSHzlcPM71jtAt8A==",
+  "dgSpecHash": "MRODjzxur5OflDzhRXBDqbU1F1BPHRKQQSvqJHzCn6KnPfOg0JJ7jfoILhL1tZh04+sm1+/ECWn7xoik81qmeA==",
   "success": true,
   "projectFilePath": "C:\\Dev\\iluvadev\\projects\\PocketBaseClient-MyTodoList\\src\\PocketBaseClient.MyTodoList\\PocketBaseClient.MyTodoList.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\iluva\\.nuget\\packages\\pocketbase-csharp-sdk\\1.0.0-prerelease\\pocketbase-csharp-sdk.1.0.0-prerelease.nupkg.sha512"
+    "C:\\Users\\iluva\\.nuget\\packages\\pocketbase-csharp-sdk\\1.0.0-prerelease\\pocketbase-csharp-sdk.1.0.0-prerelease.nupkg.sha512",
+    "C:\\Users\\iluva\\.nuget\\packages\\pocketbaseclient\\0.2.0\\pocketbaseclient.0.2.0.nupkg.sha512"
   ],
   "logs": []
 }

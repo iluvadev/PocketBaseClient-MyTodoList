@@ -17,16 +17,23 @@ namespace PocketBaseClient.MyTodoList.Models
 {
     public partial class CollectionUsers : CollectionBase<User>
     {
+        /// <inheritdoc />
         public override string Id => "_pb_users_auth_";
+
+        /// <inheritdoc />
         public override string Name => "users";
+
+        /// <inheritdoc />
         public override bool System => false;
 
         public CollectionUsers(DataServiceBase context) : base(context) { }
 
 
+        /// <summary> Query data at PocketBase, defining a Filter over collection 'users' </summary>
         public CollectionQuery<CollectionUsers, User> Filter(string filterString)
              => new CollectionQuery<CollectionUsers, User>(this, FilterQuery.Create(filterString));
 
+        /// <summary> Query data at PocketBase, defining a Filter over collection 'users' </summary>
         public CollectionQuery<CollectionUsers, User> Filter(Func<User.Filters, FilterQuery> filter)
             => new CollectionQuery<CollectionUsers, User>(this, filter(new User.Filters()));
 
