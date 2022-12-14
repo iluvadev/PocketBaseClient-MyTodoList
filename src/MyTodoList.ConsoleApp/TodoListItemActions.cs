@@ -22,9 +22,11 @@ namespace MyTodoList.ConsoleApp
         DiscardChanges,
         [Display(Name = "Delete ToDo List")]
         Delete,
+        [Display(Name = "View Collections schema")]
+        Schema,
         [Display(Name = "Clear screen")]
         Clear,
         [Display(Name = "Go Back")]
-        Return,
+        Exit,
     }
 }

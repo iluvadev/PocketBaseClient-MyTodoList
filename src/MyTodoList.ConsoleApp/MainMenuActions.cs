@@ -8,16 +8,16 @@ using System.Xml.Linq;
 
 namespace MyTodoList.ConsoleApp
 {
-    internal enum TodoListCollectionActions
+    internal enum MainMenuActions
     {
-        [Display(Name = "Get all ToDo Lists")]
-        List,
-        [Display(Name = "Create a new ToDo List")]
-        Create,
-        [Display(Name = "Enter in a ToDo List")]
-        Enter,
-        [Display(Name = "Discard all ToDo List changes")]
-        DiscardAllChanges,
+        [Display(Name = "View Collections schema")]
+        Schema,
+        [Display(Name = "Enter in 'todo_lists' Collection")]
+        ToDoLists,
+        [Display(Name = "Enter in 'tasks' Collection")]
+        Tasks,
+        [Display(Name = "Enter in 'priorities' Collection")]
+        Priorities,
         [Display(Name = "Clear screen")]
         Clear,
         [Display(Name = "Exit")]
