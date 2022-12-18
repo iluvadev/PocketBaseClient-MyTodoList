@@ -1,8 +1,9 @@
 ﻿using PocketBaseClient.MyTodoList;
 using PocketBaseClient.MyTodoList.Models;
 using PocketBaseClient.Orm;
+using PocketBaseClient.Orm.Structures;
 using Sharprompt;
-using System.Runtime.CompilerServices;
+using Task = PocketBaseClient.MyTodoList.Models.Task;
 
 namespace MyTodoList.ConsoleApp
 {
@@ -54,28 +55,7 @@ namespace MyTodoList.ConsoleApp
             ConsoleHelper.WriteLine(MyApp.AppUrl, ConsoleColor.Cyan);
             ConsoleHelper.Write("   · Application Name: ", ConsoleColor.DarkGray);
             ConsoleHelper.WriteLine(MyApp.AppName, ConsoleColor.Cyan);
-            MainMenu();
-        }
-
-        static void MainMenu()
-        {
-            Console.WriteLine();
-            bool exit = false;
-            while (!exit)
-            {
-                var action = Prompt.Select<MainMenuActions>("Main Menu");
-                switch (action)
-                {
-                    case MainMenuActions.ToDoLists: CollectionMenu(MyApp.Data.TodoListsCollection); break;
-                    case MainMenuActions.Tasks: CollectionMenu(MyApp.Data.TasksCollection); break;
-                    case MainMenuActions.Priorities: CollectionMenu(MyApp.Data.PrioritiesCollection); break;
-
-
-                    case MainMenuActions.Schema: ShowSchema(); break;
-                    case MainMenuActions.Clear: Console.Clear(); break;
-                    case MainMenuActions.Exit: Console.Clear(); exit = true; break;
-                }
-            }
+            MenuMain();
         }
 
         static void ShowSchema()
@@ -88,119 +68,146 @@ namespace MyTodoList.ConsoleApp
             ConsoleHelper.WriteLine(_Schema, ConsoleColor.DarkCyan);
         }
 
-        static void CollectionMenu<T>(CollectionBase<T> collection) where T : ItemBase, new()
+        static void MenuMain()
         {
+            Console.WriteLine();
             bool exit = false;
             while (!exit)
             {
-                ConsoleHelper.WriteYouAreIn(collection);
-                var action = Prompt.Select<CollectionActions>("ToDo Lists");
+                ConsoleHelper.WriteYouAreIn("Main menu");
+                var action = Prompt.Select<MainMenuActions>("Action to do?");
                 switch (action)
                 {
-                    case CollectionActions.List: ListItems(collection); break;
-                    case CollectionActions.Create: CreateItem<T>(); break;
-                    case CollectionActions.Enter: SelectItem(collection); break;
-                    case CollectionActions.DiscardAllChanges: DiscardChanges(collection); break;
+                    case MainMenuActions.ToDoLists: MenuItemList(MyApp.Data.TodoListsCollection); break;
+                    case MainMenuActions.Tasks: MenuItemList(MyApp.Data.TasksCollection); break;
+                    case MainMenuActions.Priorities: MenuItemList(MyApp.Data.PrioritiesCollection); break;
 
-                    case CollectionActions.Schema: ShowSchema(); break;
-                    case CollectionActions.Clear: Console.Clear(); break;
-                    case CollectionActions.Exit: Console.Clear(); exit = true; break;
+                    case MainMenuActions.Schema: ShowSchema(); break;
+                    case MainMenuActions.Clear: Console.Clear(); break;
+                    case MainMenuActions.Exit: exit = true; break;
                 }
             }
         }
 
-        static void SelectItem<T>(CollectionBase<T> collection) where T : ItemBase, new()
+        static void MenuItemList<T>(IItemList<T> itemList) where T : ItemBase, new()
         {
-            ConsoleHelper.WriteYouAreIn(collection, section: "Enter in Item");
-
-            var selectOptions = new SelectOptions<T>()
+            bool exit = false;
+            while (!exit)
             {
-                Message = $"Select an item of {collection.Name}",
-                Items = collection.GetItems(),
-                TextSelector = t => {
-                    if (t is TodoList todoList) return todoList.Name;
-                    if (t is PocketBaseClient.MyTodoList.Models.Task task) return task.Title;
-                    if (t is Priority priority) return priority.Name;
-                    return t.Id;
+                ConsoleHelper.WriteYouAreIn(itemList);
+                var action = Prompt.Select<ItemListActions>("Action to do?");
+                switch (action)
+                {
+                    case ItemListActions.List: ConsoleHelper.WriteAllItems(itemList); ; break;
+                    case ItemListActions.Create: EditItem(itemList.AddNew(), true); break;
+                    case ItemListActions.Enter: EnterItem(itemList); break;
+                    case ItemListActions.SaveAllChanges: SaveChanges(itemList); break;
+                    case ItemListActions.DiscardAllChanges: DiscardChanges(itemList); break;
+
+                    case ItemListActions.Schema: ShowSchema(); break;
+                    case ItemListActions.Clear: Console.Clear(); break;
+                    case ItemListActions.Exit: exit = true; break;
                 }
-            };
-            var item = Prompt.Select(selectOptions);
+            }
+        }
+
+        static void MenuItem<T>(T item) where T : ItemBase, new()
+        {
+            bool exit = false;
+            while (!exit)
+            {
+                ConsoleHelper.WriteYouAreIn(item);
+
+                var action = Prompt.Select<ItemActions>("Action to do?");
+                switch (action)
+                {
+                    case ItemActions.View: ConsoleHelper.WriteItem(item); break;
+                    case ItemActions.Edit: EditItem(item); break;
+
+                    case ItemActions.Navigate: break;
+
+                    case ItemActions.SaveChanges: Save(item); break;
+                    case ItemActions.Delete: Delete(item); break;
+                    case ItemActions.DiscardChanges: DiscardChanges(item); break;
+
+                    case ItemActions.Schema: ShowSchema(); break;
+                    case ItemActions.Clear: Console.Clear(); break;
+                    case ItemActions.Exit: exit = true; break;
+                }
+            }
+        }
+
+        static void EnterItem<T>(IItemList<T> itemList) where T : ItemBase, new()
+        {
+            ConsoleHelper.WriteYouAreIn(itemList, "Enter in Item");
+
+            var item = SelectItem(itemList);
 
             ConsoleHelper.WriteItem(item);
             MenuItem(item);
         }
 
-        static void MenuItem<T>(T item) where T : ItemBase, new()
+        static T SelectItem<T>(IItemList<T> items) where T : ItemBase, new()
         {
-            if(item is TodoList todoList)
+            var selectOptions = new SelectOptions<T>()
             {
-                MenuTodoList(todoList);
-                return;
-            }    
+                Message = $"Select an item of {items.Name}",
+                Items = items,
+                TextSelector = t => GetItemName(t)
+            };
+            return Prompt.Select(selectOptions);
         }
 
-        static void MenuTodoList(TodoList todoList)
+        static string GetItemName(ItemBase item)
         {
-            bool exit = false;
-            while (!exit)
-            {
-                ConsoleHelper.WriteYouAreIn(todoList.Collection, todoList);
-
-                var action = Prompt.Select<TodoListItemActions>(todoList.Name);
-                switch (action)
-                {
-                    case TodoListItemActions.View: ConsoleHelper.WriteItem(todoList); break;
-                    case TodoListItemActions.Edit: EditTodoList(todoList); break;
-
-                    case TodoListItemActions.Select: break;
-
-                    case TodoListItemActions.SaveChanges: Save(todoList); break;
-                    case TodoListItemActions.Delete: Delete(todoList); break;
-                    case TodoListItemActions.DiscardChanges: DiscardChanges(todoList); break;
-
-                    case TodoListItemActions.Schema: ShowSchema(); break;
-                    case TodoListItemActions.Clear: Console.Clear(); break;
-                    case TodoListItemActions.Exit: Console.Clear(); exit = true; break;
-                }
-            }
+            if (item is TodoList todoList) return todoList.Name ?? item.Id!;
+            if (item is Task task) return task.Title ?? item.Id!;
+            if (item is Priority priority) return priority.Name ?? item.Id!; return item.Id!;
         }
 
-        static void CreateItem<T>()
+
+        static void EditItem(ItemBase item, bool isNew = false)
         {
-            if (typeof(T) == typeof(TodoList))
-            {
-                CreateTodoList(); 
-                return;
-            }
-        }
-        static void CreateTodoList()
-        {
-            var collection = MyApp.Data.TodoListsCollection;
+            ConsoleHelper.WriteYouAreIn(item, isNew ? "New" : "Edit");
 
-            ConsoleHelper.WriteYouAreIn(collection, section: "Create New");
+            if (!isNew)
+                ConsoleHelper.WriteItem(item);
 
-            var newList = new TodoList();
-            newList.Name = Prompt.Input<string>("Name for created TodoList");
-            newList.Description = Prompt.Input<string>("Description for created TodoList");
-
-            ConsoleHelper.WriteItem(newList);
-            MenuTodoList(newList);
-        }
-
-        static void EditTodoList(TodoList item)
-        {
-            ConsoleHelper.WriteYouAreIn(item.Collection, item, "Edit");
-            ConsoleHelper.WriteItem(item);
-
-            item.Name = Prompt.Input<string>("Name for created TodoList", item.Name);
-            item.Description = Prompt.Input<string>("Description for created TodoList", item.Description);
+            if (item is TodoList todoList)
+                EditTodoList(todoList);
+            else if (item is Task task)
+                EditTask(task);
+            else if (item is Priority priority)
+                EditPriority(priority);
 
             ConsoleHelper.WriteItem(item);
+        }
+        static void EditTodoList(TodoList todoList)
+        {
+            todoList.Name = Prompt.Input<string>("Name for TodoList", todoList.Name);
+            todoList.Description = Prompt.Input<string>("Description for TodoList", todoList.Description);
+            //todoList.Tasks 
+            MenuItemList(todoList.Tasks);
+        }
+
+        static void EditTask(Task task)
+        {
+            task.Title = Prompt.Input<string>("Title for Task", task.Title);
+            task.Description = Prompt.Input<string>("Description for Task", task.Description);
+            task.Priority = SelectItem(MyApp.Data.PrioritiesCollection);
+            task.Status = Prompt.Select<Task.StatusEnum>("Status for Task");
+        }
+
+        static void EditPriority(Priority priority)
+        {
+            priority.Name = Prompt.Input<string>("Name for Priority", priority.Name);
+            priority.Description = Prompt.Input<string>("Description for Priority", priority.Description);
+            priority.Value = Prompt.Input<int>("Value for Priority", priority.Value);
         }
 
         static void Save(ItemBase item)
         {
-            ConsoleHelper.WriteYouAreIn(item.Collection, item, section: "Save changes");
+            ConsoleHelper.WriteYouAreIn(item, "Save changes");
             ConsoleHelper.WriteItem(item);
 
             ConsoleHelper.WriteProcess("Saving");
@@ -216,7 +223,7 @@ namespace MyTodoList.ConsoleApp
         }
         static void Delete(ItemBase item)
         {
-            ConsoleHelper.WriteYouAreIn(item.Collection, item, section: "Delete");
+            ConsoleHelper.WriteYouAreIn(item, "Delete");
             ConsoleHelper.WriteItem(item);
 
             ConsoleHelper.WriteProcess("Deleting");
@@ -231,17 +238,25 @@ namespace MyTodoList.ConsoleApp
             ConsoleHelper.WriteItem(item);
         }
 
-        static void DiscardChanges(CollectionBase collection)
+        static void SaveChanges(IBasicList list)
         {
-            ConsoleHelper.WriteYouAreIn(collection, section: "Discard changes");
+            ConsoleHelper.WriteYouAreIn(list, "Save changes");
+            ConsoleHelper.WriteProcess("Saving local changes");
+            list.SaveChanges(ListSaveDiscardModes.AllChanges);
+            ConsoleHelper.WriteDone();
+        }
+
+        static void DiscardChanges(IBasicList list)
+        {
+            ConsoleHelper.WriteYouAreIn(list, "Discard changes");
             ConsoleHelper.WriteProcess("Discarding local changes");
-            collection.DiscardChanges();
+            list.DiscardChanges(ListSaveDiscardModes.AllChanges);
             ConsoleHelper.WriteDone();
         }
 
         static void DiscardChanges(ItemBase item)
         {
-            ConsoleHelper.WriteYouAreIn(item.Collection, item, section: "Discard changes");
+            ConsoleHelper.WriteYouAreIn(item, "Discard changes");
             ConsoleHelper.WriteItem(item);
 
             ConsoleHelper.WriteProcess("Discarding local changes");
@@ -250,13 +265,5 @@ namespace MyTodoList.ConsoleApp
 
             ConsoleHelper.WriteItem(item);
         }
-
-        static void ListItems<T>(CollectionBase<T> collection) where T : ItemBase, new()
-        {
-            ConsoleHelper.WriteYouAreIn(collection, section: "Get Items");
-            ConsoleHelper.WriteAllItems(collection.GetItems());
-        }
-
-
     }
 }

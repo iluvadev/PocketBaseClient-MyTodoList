@@ -1,5 +1,8 @@
 ﻿using PocketBaseClient;
+using PocketBaseClient.MyTodoList.Models;
 using PocketBaseClient.Orm;
+using PocketBaseClient.Orm.Structures;
+using Task = PocketBaseClient.MyTodoList.Models.Task;
 
 namespace MyTodoList.ConsoleApp
 {
@@ -15,54 +18,97 @@ namespace MyTodoList.ConsoleApp
         public static void WriteLine(string? text, ConsoleColor foreColor)
             => Write(text + Environment.NewLine, foreColor);
 
-        public static void WriteYouAreIn(CollectionBase collection, ItemBase? item = null, string? section = null)
+        public static void WriteYouAreIn(object element, string? action = null)
         {
             Console.WriteLine();
-            Write("  Collection ", ConsoleColor.DarkGray);
-            Write(collection.Name, ConsoleColor.Blue);
-            Write(". ", ConsoleColor.DarkGray);
+            Write("  You are in", ConsoleColor.DarkYellow);
 
-            if (item != null)
+            foreach (var section in GetWhereIam(element))
             {
-                Write("Item ", ConsoleColor.DarkGray);
-                Write(item.Id, ConsoleColor.Blue);
-                Write(". ", ConsoleColor.DarkGray);
+                Write(" >> ", ConsoleColor.DarkGreen);
+                Write(section, ConsoleColor.Cyan);
             }
-            if (section != null)
+            if (action != null)
             {
-                Write("Action ", ConsoleColor.DarkGray);
-                Write(section, ConsoleColor.Blue);
-                Write(": ", ConsoleColor.DarkGray);
+                Write(" >> ", ConsoleColor.DarkBlue);
+                Write(action, ConsoleColor.DarkMagenta);
+                Write(". ", ConsoleColor.DarkGray);
             }
             Console.WriteLine();
         }
+        static List<string> GetWhereIam(object? element)
+        {
+            var whereIam = new List<string>();
+            if (element is IBasicList list)
+                whereIam.Add(list.Name ?? "");
 
-        public static void WriteAllItems<T>(IEnumerable<T> items) where T : ItemBase
+            if (element is TodoList todoList)
+                whereIam.Add(todoList.Name ?? "");
+
+            if (element is Task task)
+                whereIam.Add(task.Title ?? "");
+
+            if (element is Priority priority)
+                whereIam.Add(priority.Name ?? "");
+
+            if (element is IOwnedByItem owned)
+                whereIam.AddRange(GetWhereIam(owned.Owner));
+
+            if (element is ItemBase item)
+                whereIam.AddRange(GetWhereIam(item.Collection));
+
+            if(element is string strElem)
+                whereIam.Add(strElem);
+
+            whereIam.Reverse();
+            return whereIam;
+        }
+
+        public static void WriteAllItems<T>(CollectionBase<T> collection) where T : ItemBase, new()
+        {
+            Write("Collection: ", ConsoleColor.DarkGray);
+            WriteLine(collection.Name, ConsoleColor.Cyan);
+
+            WriteAllItemsInternal(collection.GetItems(false, GetItemsFilter.New | GetItemsFilter.Load | GetItemsFilter.Erased));
+        }
+        public static void WriteAllItems<T>(IEnumerable<T> list) where T : ItemBase, new()
+        {
+            Write("List of: ", ConsoleColor.DarkGray);
+            WriteLine(typeof(T).Name, ConsoleColor.Cyan);
+
+            WriteAllItemsInternal(list as IEnumerable<T>);
+        }
+
+        private static void WriteAllItemsInternal<T>(IEnumerable<T> items) where T : ItemBase
         {
             bool any = false;
             foreach (var item in items)
             {
+                WriteLine("---", ConsoleColor.DarkGray);
                 WriteItem(item);
                 any = true;
             }
             if (!any)
                 WriteLine($"    [No items]", ConsoleColor.DarkMagenta);
+            WriteLine("---", ConsoleColor.DarkGray);
+
             Console.WriteLine();
         }
 
         public static void WriteItem(ItemBase item)
         {
-            WriteLine("--", ConsoleColor.DarkGray);
-            Write($"{item.Id} ", ConsoleColor.DarkCyan);
+            Write($" · {item.Id} ", ConsoleColor.DarkCyan);
 
             if (item.Metadata_.IsNew)
                 Write("[New] ", ConsoleColor.DarkYellow);
             if (item.Metadata_.IsCached)
                 Write("[Cached] ", ConsoleColor.DarkGreen);
-            else if(!item.Metadata_.IsNew)
+            else if (!item.Metadata_.IsNew)
                 Write("[Downloaded] ", ConsoleColor.DarkMagenta);
             if (!item.Metadata_.IsNew && item.Metadata_.HasLocalChanges)
                 Write("[Changed] ", ConsoleColor.DarkYellow);
+            if (item.Metadata_.IsTobeDeleted)
+                Write("[Deleted] ", ConsoleColor.DarkRed);
             if (item.Metadata_.IsTrash)
                 Write("[Trash] ", ConsoleColor.DarkRed);
 

@@ -11,7 +11,7 @@
           "lib/net6.0/pocketbase-csharp-sdk.dll": {}
         }
       },
-      "PocketBaseClient/0.2.0": {
+      "PocketBaseClient/0.3.0": {
         "type": "package",
         "dependencies": {
           "pocketbase-csharp-sdk": "1.0.0-prerelease"
@@ -40,15 +40,15 @@
         "pocketbase-csharp-sdk.nuspec"
       ]
     },
-    "PocketBaseClient/0.2.0": {
-      "sha512": "CTi+y5HWfbvdF1RJCmv1m5zpiefhC1r2t8QPtfGveYzkjXiW/FhjFdAcaqWMxx2r5TssmrtZ4ese/RToek6iFw==",
+    "PocketBaseClient/0.3.0": {
+      "sha512": "VLV9TkMwu1FWYPnO12VE8hNY9N2Gbvjzl+ZAWmfXsQKvpDJE1CeA4fCmlVKyZmNM+F71DTa7iSgR0USXPacWZA==",
       "type": "package",
-      "path": "pocketbaseclient/0.2.0",
+      "path": "pocketbaseclient/0.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net6.0/PocketBaseClient.dll",
-        "pocketbaseclient.0.2.0.nupkg.sha512",
+        "pocketbaseclient.0.3.0.nupkg.sha512",
         "pocketbaseclient.nuspec"
       ]
     }

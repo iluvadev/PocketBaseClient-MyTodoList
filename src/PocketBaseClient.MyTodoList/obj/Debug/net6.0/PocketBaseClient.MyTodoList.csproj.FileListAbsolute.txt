@@ -1,11 +1,11 @@
+C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\bin\Debug\net6.0\PocketBaseClient.MyTodoList.deps.json
+C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\bin\Debug\net6.0\PocketBaseClient.MyTodoList.dll
+C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\bin\Debug\net6.0\PocketBaseClient.MyTodoList.pdb
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\PocketBaseClient.MyTodoList.csproj.AssemblyReference.cache
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\PocketBaseClient.MyTodoList.GeneratedMSBuildEditorConfig.editorconfig
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\PocketBaseClient.MyTodoList.AssemblyInfoInputs.cache
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\PocketBaseClient.MyTodoList.AssemblyInfo.cs
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\PocketBaseClient.MyTodoList.csproj.CoreCompileInputs.cache
-C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\bin\Debug\net6.0\PocketBaseClient.MyTodoList.deps.json
-C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\bin\Debug\net6.0\PocketBaseClient.MyTodoList.dll
-C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\bin\Debug\net6.0\PocketBaseClient.MyTodoList.pdb
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\PocketBaseClient.MyTodoList.dll
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\refint\PocketBaseClient.MyTodoList.dll
 C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\obj\Debug\net6.0\PocketBaseClient.MyTodoList.pdb

@@ -8,21 +8,21 @@ using System.Xml.Linq;
 
 namespace MyTodoList.ConsoleApp
 {
-    internal enum TodoListItemActions
+    internal enum ItemActions
     {
-        [Display(Name = "View ToDo List")]
+        [Display(Name = "View item")]
         View,
-        [Display(Name = "Enter in Tasks")]
-        Select,
-        [Display(Name = "Edit ToDo List")]
+        [Display(Name = "Edit item")]
         Edit,
+        [Display(Name = "Navigate to...")]
+        Navigate,
         [Display(Name = "Save changes to PocketBase")]
         SaveChanges,
         [Display(Name = "Discard local changes")]
         DiscardChanges,
-        [Display(Name = "Delete ToDo List")]
+        [Display(Name = "Delete item")]
         Delete,
-        [Display(Name = "View Collections schema")]
+        [Display(Name = "View Schema")]
         Schema,
         [Display(Name = "Clear screen")]
         Clear,

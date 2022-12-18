@@ -8,17 +8,19 @@ using System.Xml.Linq;
 
 namespace MyTodoList.ConsoleApp
 {
-    internal enum CollectionActions
+    internal enum ItemListActions
     {
-        [Display(Name = "Get all items in the collection")]
+        [Display(Name = "Get all items")]
         List,
         [Display(Name = "Create a new item")]
         Create,
-        [Display(Name = "Enter in an item of the collection")]
+        [Display(Name = "Enter in an item")]
         Enter,
-        [Display(Name = "Discard all changes in the collection")]
+        [Display(Name = "Save all changes")]
+        SaveAllChanges,
+        [Display(Name = "Discard all changes")]
         DiscardAllChanges,
-        [Display(Name = "View Collections schema")]
+        [Display(Name = "View Schema")]
         Schema,
         [Display(Name = "Clear screen")]
         Clear,

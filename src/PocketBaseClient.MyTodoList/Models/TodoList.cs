@@ -56,15 +56,15 @@ namespace PocketBaseClient.MyTodoList.Models
            set => Set(value, ref _Description);
         }
 
-        private LimitableList<Task> _Tasks = new LimitableList<Task>();
+        private TasksList _Tasks = new TasksList();
         /// <summary> Maps to 'tasks' field in PocketBase </summary>
         [JsonPropertyName("tasks")]
         [PocketBaseField(id: "16w49cfn", name: "tasks", required: false, system: false, unique: false, type: "relation")]
         [Display(Name = "Tasks")]
-        [JsonConverter(typeof(RelationListConverter<LimitableList<Task>, Task>))]
-        public LimitableList<Task> Tasks
+        [JsonConverter(typeof(RelationListConverter<TasksList, Task>))]
+        public TasksList Tasks
         {
-           get => Get(() => _Tasks ??= new LimitableList<Task>());
+           get => Get(() => _Tasks ??= new TasksList(this));
            private set => Set(value, ref _Tasks);
         }
 

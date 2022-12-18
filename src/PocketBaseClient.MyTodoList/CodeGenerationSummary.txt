@@ -22,8 +22,8 @@ pocketbase project: https://github.com/pocketbase/pocketbase
 
 
 Code generated with:
-    PocketBaseClient CodeGenerator: pbcodegen v.0.3.1.0
-    At: 2022-12-13T20:38:42.9709469Z
+    PocketBaseClient CodeGenerator: pbcodegen v.0.4.0.0
+    At: 2022-12-18T20:33:36.1869767Z
 
 PocketBase Application: 
     Name: my-todo-list
@@ -42,6 +42,7 @@ Files Generated:
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\Task.StatusEnum.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\TodoList.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\TodoList.Filters.cs
+    C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\TodoList.TasksList.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\User.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\User.Filters.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\MyTodoListApplication.cs
