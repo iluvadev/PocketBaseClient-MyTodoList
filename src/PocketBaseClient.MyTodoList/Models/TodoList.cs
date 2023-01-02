@@ -37,24 +37,16 @@ namespace PocketBaseClient.MyTodoList.Models
         [JsonPropertyName("name")]
         [PocketBaseField(id: "agbynrkr", name: "name", required: true, system: false, unique: true, type: "text")]
         [Display(Name = "Name")]
-        [Required(ErrorMessage = @"name is required")]
+        [Required(ErrorMessage = @"Name is required")]
         [StringLength(2147483647, MinimumLength = 3, ErrorMessage = "Minimum 3, Maximum 2147483647 characters")]
-        public string? Name
-        {
-           get => Get(() => _Name);
-           set => Set(value, ref _Name);
-        }
+        public string? Name { get => Get(() => _Name); set => Set(value, ref _Name); }
 
         private string? _Description = null;
         /// <summary> Maps to 'description' field in PocketBase </summary>
         [JsonPropertyName("description")]
         [PocketBaseField(id: "ipmwycuu", name: "description", required: false, system: false, unique: false, type: "text")]
         [Display(Name = "Description")]
-        public string? Description
-        {
-           get => Get(() => _Description);
-           set => Set(value, ref _Description);
-        }
+        public string? Description { get => Get(() => _Description); set => Set(value, ref _Description); }
 
         private TasksList _Tasks = new TasksList();
         /// <summary> Maps to 'tasks' field in PocketBase </summary>
@@ -62,12 +54,7 @@ namespace PocketBaseClient.MyTodoList.Models
         [PocketBaseField(id: "16w49cfn", name: "tasks", required: false, system: false, unique: false, type: "relation")]
         [Display(Name = "Tasks")]
         [JsonConverter(typeof(RelationListConverter<TasksList, Task>))]
-        public TasksList Tasks
-        {
-           get => Get(() => _Tasks ??= new TasksList(this));
-           private set => Set(value, ref _Tasks);
-        }
-
+        public TasksList Tasks { get => Get(() => _Tasks ??= new TasksList(this)); private set => Set(value, ref _Tasks); }
 
         #endregion Field Properties
 
@@ -93,7 +80,6 @@ namespace PocketBaseClient.MyTodoList.Models
         public static CollectionTodoLists GetCollection() 
             => (CollectionTodoLists)DataServiceBase.GetCollection<TodoList>()!;
         #endregion Collection
-
 
         #region GetById
         public static TodoList? GetById(string id, bool reload = false) 

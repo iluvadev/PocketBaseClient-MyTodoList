@@ -5,7 +5,7 @@
   "projectFilePath": "C:\\Dev\\iluvadev\\projects\\PocketBaseClient-MyTodoList\\src\\PocketBaseClient.MyTodoList\\PocketBaseClient.MyTodoList.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\iluva\\.nuget\\packages\\pocketbase-csharp-sdk\\1.0.0-prerelease\\pocketbase-csharp-sdk.1.0.0-prerelease.nupkg.sha512",
-    "C:\\Users\\iluva\\.nuget\\packages\\pocketbaseclient\\0.3.0\\pocketbaseclient.0.3.0.nupkg.sha512"
+    "C:\\Users\\iluva\\.nuget\\packages\\pocketbaseclient\\0.4.0\\pocketbaseclient.0.4.0.nupkg.sha512"
   ],
   "logs": []
 }

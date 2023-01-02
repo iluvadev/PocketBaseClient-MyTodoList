@@ -37,38 +37,25 @@ namespace PocketBaseClient.MyTodoList.Models
         [JsonPropertyName("name")]
         [PocketBaseField(id: "ibvcphat", name: "name", required: true, system: false, unique: true, type: "text")]
         [Display(Name = "Name")]
-        [Required(ErrorMessage = @"name is required")]
+        [Required(ErrorMessage = @"Name is required")]
         [StringLength(2147483647, MinimumLength = 3, ErrorMessage = "Minimum 3, Maximum 2147483647 characters")]
-        public string? Name
-        {
-           get => Get(() => _Name);
-           set => Set(value, ref _Name);
-        }
+        public string? Name { get => Get(() => _Name); set => Set(value, ref _Name); }
 
         private int? _Value = null;
         /// <summary> Maps to 'value' field in PocketBase </summary>
         [JsonPropertyName("value")]
         [PocketBaseField(id: "gmaupy0p", name: "value", required: true, system: false, unique: false, type: "number")]
         [Display(Name = "Value")]
-        [Required(ErrorMessage = @"value is required")]
+        [Required(ErrorMessage = @"Value is required")]
         [Range(0, 100, ErrorMessage = "Minimum 0, Maximum 100")]
-        public int? Value
-        {
-           get => Get(() => _Value);
-           set => Set(value, ref _Value);
-        }
+        public int? Value { get => Get(() => _Value); set => Set(value, ref _Value); }
 
         private string? _Description = null;
         /// <summary> Maps to 'description' field in PocketBase </summary>
         [JsonPropertyName("description")]
         [PocketBaseField(id: "bi4zhhtt", name: "description", required: false, system: false, unique: false, type: "text")]
         [Display(Name = "Description")]
-        public string? Description
-        {
-           get => Get(() => _Description);
-           set => Set(value, ref _Description);
-        }
-
+        public string? Description { get => Get(() => _Description); set => Set(value, ref _Description); }
 
         #endregion Field Properties
 
@@ -90,7 +77,6 @@ namespace PocketBaseClient.MyTodoList.Models
         public static CollectionPriorities GetCollection() 
             => (CollectionPriorities)DataServiceBase.GetCollection<Priority>()!;
         #endregion Collection
-
 
         #region GetById
         public static Priority? GetById(string id, bool reload = false) 

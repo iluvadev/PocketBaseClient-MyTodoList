@@ -1,10 +1,13 @@
 
-PocketBaseClient-csharp project: https://github.com/iluvadev/PocketBaseClient-csharp
-Issues: https://github.com/iluvadev/PocketBaseClient-csharp/issues
-License (MIT): https://github.com/iluvadev/PocketBaseClient-csharp/blob/main/LICENSE
-
-pocketbase-csharp-sdk project: https://github.com/PRCV1/pocketbase-csharp-sdk
-pocketbase project: https://github.com/pocketbase/pocketbase
+// This file was generated automatically for the PocketBase Application my-todo-list (https://my-todo-list.pockethost.io)
+//    See CodeGenerationSummary.txt for more details
+//
+// PocketBaseClient-csharp project: https://github.com/iluvadev/PocketBaseClient-csharp
+// Issues: https://github.com/iluvadev/PocketBaseClient-csharp/issues
+// License (MIT): https://github.com/iluvadev/PocketBaseClient-csharp/blob/main/LICENSE
+//
+// pocketbase-csharp-sdk project: https://github.com/PRCV1/pocketbase-csharp-sdk 
+// pocketbase project: https://github.com/pocketbase/pocketbase
 
 
   _____           _        _   ____                  _____ _ _            _   
@@ -22,8 +25,8 @@ pocketbase project: https://github.com/pocketbase/pocketbase
 
 
 Code generated with:
-    PocketBaseClient CodeGenerator: pbcodegen v.0.4.0.0
-    At: 2022-12-18T20:33:36.1869767Z
+    PocketBaseClient CodeGenerator: pbcodegen v.0.5.0.0
+    At: 2023-01-02T17:58:39.6797137Z
 
 PocketBase Application: 
     Name: my-todo-list
@@ -37,14 +40,18 @@ Files Generated:
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\CollectionUsers.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\Priority.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\Priority.Filters.cs
+    C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\Priority.Sorts.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\Task.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\Task.Filters.cs
+    C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\Task.Sorts.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\Task.StatusEnum.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\TodoList.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\TodoList.Filters.cs
+    C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\TodoList.Sorts.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\TodoList.TasksList.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\User.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\User.Filters.cs
+    C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Models\User.Sorts.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\MyTodoListApplication.cs
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\PocketBaseClient.MyTodoList.csproj
     C:\Dev\iluvadev\projects\PocketBaseClient-MyTodoList\src\PocketBaseClient.MyTodoList\Services\MyTodoListDataService.cs

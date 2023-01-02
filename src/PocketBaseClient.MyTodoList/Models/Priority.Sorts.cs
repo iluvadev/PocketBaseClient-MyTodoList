@@ -13,16 +13,19 @@ using PocketBaseClient.Orm.Filters;
 
 namespace PocketBaseClient.MyTodoList.Models
 {
-    public partial class User
+    public partial class Priority
     {
-        public class Filters : ItemBaseFilters
+        public class Sorts : ItemBaseSorts
         {
 
-            /// <summary> Gets a Filter to Query data over the 'name' field in PocketBase </summary>
-            public FieldFilterText Name => new FieldFilterText("name");
+            /// <summary>Makes a SortCommand to Order by the 'name' field</summary>
+            public SortCommand Name => new SortCommand("name");
 
-            /// <summary> Gets a Filter to Query data over the 'avatar' field in PocketBase </summary>
-            public FieldFilterText Avatar => new FieldFilterText("avatar");
+            /// <summary>Makes a SortCommand to Order by the 'value' field</summary>
+            public SortCommand Value => new SortCommand("value");
+
+            /// <summary>Makes a SortCommand to Order by the 'description' field</summary>
+            public SortCommand Description => new SortCommand("description");
 
 
         }

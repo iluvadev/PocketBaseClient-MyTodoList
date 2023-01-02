@@ -37,37 +37,25 @@ namespace PocketBaseClient.MyTodoList.Models
         [JsonPropertyName("title")]
         [PocketBaseField(id: "4kxyduic", name: "title", required: true, system: false, unique: false, type: "text")]
         [Display(Name = "Title")]
-        [Required(ErrorMessage = @"title is required")]
+        [Required(ErrorMessage = @"Title is required")]
         [StringLength(2147483647, MinimumLength = 3, ErrorMessage = "Minimum 3, Maximum 2147483647 characters")]
-        public string? Title
-        {
-           get => Get(() => _Title);
-           set => Set(value, ref _Title);
-        }
+        public string? Title { get => Get(() => _Title); set => Set(value, ref _Title); }
 
         private string? _Description = null;
         /// <summary> Maps to 'description' field in PocketBase </summary>
         [JsonPropertyName("description")]
         [PocketBaseField(id: "hffqq44h", name: "description", required: false, system: false, unique: false, type: "text")]
         [Display(Name = "Description")]
-        public string? Description
-        {
-           get => Get(() => _Description);
-           set => Set(value, ref _Description);
-        }
+        public string? Description { get => Get(() => _Description); set => Set(value, ref _Description); }
 
         private Priority? _Priority = null;
         /// <summary> Maps to 'priority' field in PocketBase </summary>
         [JsonPropertyName("priority")]
         [PocketBaseField(id: "pp2uicwe", name: "priority", required: true, system: false, unique: false, type: "relation")]
         [Display(Name = "Priority")]
-        [Required(ErrorMessage = @"priority is required")]
+        [Required(ErrorMessage = @"Priority is required")]
         [JsonConverter(typeof(RelationConverter<Priority>))]
-        public Priority? Priority
-        {
-           get => Get(() => _Priority);
-           set => Set(value, ref _Priority);
-        }
+        public Priority? Priority { get => Get(() => _Priority); set => Set(value, ref _Priority); }
 
         private StatusEnum? _Status = null;
         /// <summary> Maps to 'status' field in PocketBase </summary>
@@ -75,12 +63,7 @@ namespace PocketBaseClient.MyTodoList.Models
         [PocketBaseField(id: "4e4k0hod", name: "status", required: false, system: false, unique: false, type: "select")]
         [Display(Name = "Status")]
         [JsonConverter(typeof(EnumConverter<StatusEnum>))]
-        public StatusEnum? Status
-        {
-           get => Get(() => _Status);
-           set => Set(value, ref _Status);
-        }
-
+        public StatusEnum? Status { get => Get(() => _Status); set => Set(value, ref _Status); }
 
         #endregion Field Properties
 
@@ -107,7 +90,6 @@ namespace PocketBaseClient.MyTodoList.Models
         public static CollectionTasks GetCollection() 
             => (CollectionTasks)DataServiceBase.GetCollection<Task>()!;
         #endregion Collection
-
 
         #region GetById
         public static Task? GetById(string id, bool reload = false) 

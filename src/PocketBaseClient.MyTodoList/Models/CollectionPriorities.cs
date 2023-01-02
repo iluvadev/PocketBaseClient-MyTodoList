@@ -26,16 +26,17 @@ namespace PocketBaseClient.MyTodoList.Models
         /// <inheritdoc />
         public override bool System => false;
 
-        public CollectionPriorities(DataServiceBase context) : base(context) { }
-
-
-        /// <summary> Query data at PocketBase, defining a Filter over collection 'priorities' </summary>
-        public CollectionQuery<CollectionPriorities, Priority> Filter(string filterString)
-             => new CollectionQuery<CollectionPriorities, Priority>(this, FilterQuery.Create(filterString));
+        /// <summary> Contructor: The Collection 'priorities' </summary>
+        /// <param name="context">The DataService for the collection</param>
+        internal CollectionPriorities(DataServiceBase context) : base(context) { }
 
         /// <summary> Query data at PocketBase, defining a Filter over collection 'priorities' </summary>
-        public CollectionQuery<CollectionPriorities, Priority> Filter(Func<Priority.Filters, FilterQuery> filter)
-            => new CollectionQuery<CollectionPriorities, Priority>(this, filter(new Priority.Filters()));
+        public CollectionQuery<CollectionPriorities, Priority.Sorts, Priority> Filter(Func<Priority.Filters, FilterCommand> filter)
+            => new CollectionQuery<CollectionPriorities, Priority.Sorts, Priority>(this, filter(new Priority.Filters()));
+
+        /// <summary> Query all data at PocketBase, over collection 'priorities' </summary>
+        public CollectionQuery<CollectionPriorities, Priority.Sorts, Priority> All()
+            => new CollectionQuery<CollectionPriorities, Priority.Sorts, Priority>(this, null);
 
     }
 }

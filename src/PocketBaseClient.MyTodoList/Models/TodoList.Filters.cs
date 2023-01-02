@@ -10,19 +10,23 @@
 // pocketbase project: https://github.com/pocketbase/pocketbase
 
 using PocketBaseClient.Orm.Filters;
-using System.Net.Mail;
 
 namespace PocketBaseClient.MyTodoList.Models
 {
-    public partial class TodoList 
+    public partial class TodoList
     {
         public class Filters : ItemBaseFilters
         {
 
-            /// <summary>Makes a Filter to Query data over the 'name' field</summary>
-            public FilterQuery Name(OperatorText op, string value) => FilterQuery.Create("name", op, value);
-            /// <summary>Makes a Filter to Query data over the 'description' field</summary>
-            public FilterQuery Description(OperatorText op, string value) => FilterQuery.Create("description", op, value);
+            /// <summary> Gets a Filter to Query data over the 'name' field in PocketBase </summary>
+            public FieldFilterText Name => new FieldFilterText("name");
+
+            /// <summary> Gets a Filter to Query data over the 'description' field in PocketBase </summary>
+            public FieldFilterText Description => new FieldFilterText("description");
+
+            /// <summary> Gets a Filter to Query data over the 'tasks' field in PocketBase </summary>
+            public FieldFilterItemList<TasksList, Task> Tasks => new FieldFilterItemList<TasksList, Task>("tasks");
+
 
         }
     }
